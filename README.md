@@ -135,6 +135,38 @@ Abre `report.sql` en tu editor SQL, selecciona la consulta que quieras y ejecút
 ---
 
 ## 🗺️ 4. Diagrama Entidad-Relación
+---
+```mermaid
+erDiagram
+    CLIENTES ||--o{ VENTAS : realiza
+    PRODUCTOS ||--o{ DETALLE_VENTA : contiene
+    VENTAS ||--o{ DETALLE_VENTA : incluye
+
+    CLIENTES {
+        INT id_cliente PK
+        STRING nombre
+        STRING email UK
+    }
+
+    PRODUCTOS {
+        INT id_producto PK
+        STRING nombre
+        NUMERIC precio
+    }
+
+    VENTAS {
+        INT id_venta PK
+        DATE fecha
+        INT id_cliente FK
+    }
+
+    DETALLE_VENTA {
+        INT id_detalle PK
+        INT id_venta FK
+        INT id_producto FK
+        INT cantidad
+    }
+ ```
 
 
 ---
